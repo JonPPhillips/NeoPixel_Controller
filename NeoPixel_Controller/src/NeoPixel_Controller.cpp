@@ -341,12 +341,20 @@ void ChooseShow(){
     display.display();
     ShowChoice=6;
   }
+
+  if((encPos>=60)&&(encPos<=65)){
+    display.clearDisplay();
+    display.setCursor(0,0);
+    display.printf("Void");
+    display.display();
+    ShowChoice=7;
+  }
   
   if(encPos<0){
-    enCoder.write(55);
-    encPos=55;
+    enCoder.write(65);
+    encPos=65;
   }
-  if(encPos>55){
+  if(encPos>65){
     enCoder.write(0);
     encPos=0;
   }
@@ -499,5 +507,30 @@ if(ShowChoice==6){
 
   pixel.setBrightness(pBright);   
   pixelFill(0,PIXELCOUNT,setColor);
+}
+
+// Void
+
+if(ShowChoice==7){
+  pixel.setBrightness(75);
+  pixelFill(0,PIXELCOUNT,white);
+ 
+  for(x=-6;x<PIXELCOUNT+6;x++){
+    pixel.setPixelColor(x-4,100,100,100);
+    pixel.setPixelColor(x-3,75,75,75);
+    pixel.setPixelColor(x-2,50,50,50);
+    pixel.setPixelColor(x-1,25,25,25);
+    pixel.setPixelColor(x,0,0,0);
+    pixel.setPixelColor(x+1,25,25,25);
+    pixel.setPixelColor(x+2,50,50,50);
+    pixel.setPixelColor(x+3,75,75,75);
+    pixel.setPixelColor(x+4,100,100,100);
+    pixel.show();
+
+   
+    delay(50);
+
+
+  }
 }
 }
